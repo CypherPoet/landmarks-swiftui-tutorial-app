@@ -16,10 +16,16 @@ struct ContentView: View {
                 .fontWeight(.bold)
                 .foregroundColor(.pink)
                 .multilineTextAlignment(.leading)
-            Text("Joshua Tree National Park")
-                .font(.subheadline)
-        }        
-            
+            HStack {
+                Text("Joshua Tree National Park")
+                    .font(.subheadline)
+                Spacer()
+                Text("California")
+                    .font(.subheadline)
+            }
+        }
+        .padding()
+        
     }
 }
 
