@@ -24,8 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let landmarks: [Landmark] = DataLoader.loadModels(fromFileNamed: "landmarkData.json")
         
         // Create the SwiftUI view that provides the window contents.
-//        let contentView = LandmarkDetail(landmark: landmarks[0])
-        let contentView = LandmarkDetail()
+        let contentView = LandmarkList(landmarks: landmarks)
         
         // Use a `UIHostingController` as the window root view controller.
         window.rootViewController = UIHostingController(rootView: contentView)
