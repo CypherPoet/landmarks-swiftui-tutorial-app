@@ -28,25 +28,41 @@ struct LandmarkDetail: View {
     }
 }
 
+
 // MARK: - Computeds
 extension LandmarkDetail {
     
-    var landmarkIndex: Int {
+    private var landmarkIndex: Int {
         userData.landmarks.firstIndex(where: { $0.id == landmark.id })!
     }
 }
 
 
-private extension LandmarkDetail {
+extension LandmarkDetail {
     
     var descriptionView: some View {
         VStack(alignment: .leading) {
-            Text(landmark.name)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.pink)
-                .multilineTextAlignment(.leading)
             HStack {
+                Text(landmark.name)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.pink)
+                    .multilineTextAlignment(.leading)
+                
+                Button(action: {
+                    self.userData.landmarks[self.landmarkIndex].isFavorite.toggle()
+                }) {
+                    if self.userData.landmarks[self.landmarkIndex].isFavorite {
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.yellow)
+                    } else {
+                        Image(systemName: "star")
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+            
+            HStack(alignment: .top) {
                 Text(landmark.park)
                     .font(.subheadline)
                 Spacer()
@@ -59,8 +75,9 @@ private extension LandmarkDetail {
 }
 
 
-struct ContentView_Previews: PreviewProvider {
+struct LandmarkDetail_Previews: PreviewProvider {
     static var previews: some View {
         LandmarkDetail(landmark: Landmark.dummyLandmarks[0])
+            .environmentObject(UserDataStore(landmarks: Landmark.dummyLandmarks))
     }
 }
