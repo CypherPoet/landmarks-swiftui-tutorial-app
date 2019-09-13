@@ -9,13 +9,18 @@
 import SwiftUI
 
 struct LandmarkList: View {
-    var landmarks: [Landmark]
+    @EnvironmentObject var userData: UserDataStore
     
     var body: some View {
         NavigationView {
-            List(landmarks) { landmark in
-                NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
-                    LandmarkRow(landmark: landmark)
+            List {
+                Toggle(isOn: $userData.isShowingFavoritesOnly) {
+                    Text("Favorites only")
+                }
+                ForEach(landmarksToShow) { landmark in
+                    NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
+                        LandmarkRow(landmark: landmark)
+                    }
                 }
             }
             .navigationBarTitle("Landmarks")
@@ -23,14 +28,31 @@ struct LandmarkList: View {
     }
 }
 
+
+// MARK: - Computeds
+extension LandmarkList {
+  
+    var landmarksToShow: [Landmark] {
+        userData.isShowingFavoritesOnly ?
+            userData.landmarks.filter({ $0.isFavorite }) : userData.landmarks
+    }
+}
+
+
 struct LandmarkList_Previews: PreviewProvider {
+//    static let deviceNames = ["iPhone SE", "iPhone XR", "iPhone 11", "iPad Pro (12.9-inch)"]
+    static let deviceNames = ["iPhone 11"]
+    
     static var previews: some View {
-        ForEach([
-            "iPhone SE", "iPhone XR", "iPhone 11", "iPad Pro (12.9-inch)"
-        ], id: \.self) { deviceName in
-            LandmarkList(landmarks: Landmark.dummyLandmarks)
-                .previewDevice(PreviewDevice(rawValue: deviceName))
-                .previewDisplayName(deviceName)
-        }
+        ForEach(
+            Self.deviceNames,
+            id: \.self,
+            content: { deviceName in
+                LandmarkList()
+                    .environmentObject(UserDataStore(landmarks: Landmark.dummyLandmarks))
+                    .previewDevice(PreviewDevice(rawValue: deviceName))
+                    .previewDisplayName(deviceName)
+            }
+        )
     }
 }

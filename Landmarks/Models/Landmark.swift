@@ -17,6 +17,8 @@ struct Landmark: Identifiable {
     var state: String
     var park: String
     var category: Category
+    var isFavorite: Bool = false
+    var isFeatured: Bool = false
 
     // TODO: Make this `fileprivate`
     var imageName: String
@@ -30,7 +32,8 @@ struct Landmark: Identifiable {
             name: "Turtle Rock 🐢",
             state: "California",
             park: "Joshua Tree National Park",
-            category: .featured,
+            category: .rivers,
+            isFavorite: true,
             imageName: "turtlerock",
             coordinates: Coordinates(latitude: -116.166868, longitude: 34.011286)
         ),
@@ -49,14 +52,14 @@ struct Landmark: Identifiable {
 // MARK: - Landmark.Category
 extension Landmark {
     enum Category: String, CaseIterable, Codable, Hashable {
-        case featured
+        case mountains
         case lakes
         case rivers
         
         var displayName: String {
             switch self {
-            case .featured:
-                return "Featured"
+            case .mountains:
+                return "Mountains"
             case .lakes:
                 return "Lakes"
             case .rivers:

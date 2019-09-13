@@ -19,12 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         guard let windowScene = scene as? UIWindowScene else { return }
-        
         let window = UIWindow(windowScene: windowScene)
+        
         let landmarks: [Landmark] = DataLoader.loadModels(fromFileNamed: "landmarkData.json")
         
         // Create the SwiftUI view that provides the window contents.
-        let contentView = LandmarkList(landmarks: landmarks)
+        let contentView = LandmarkList()
+            .environmentObject(UserDataStore(landmarks: landmarks))
         
         // Use a `UIHostingController` as the window root view controller.
         window.rootViewController = UIHostingController(rootView: contentView)

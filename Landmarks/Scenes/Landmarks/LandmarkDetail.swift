@@ -9,7 +9,9 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
-    var landmark: Landmark
+    @EnvironmentObject var userData: UserDataStore
+    
+    let landmark: Landmark
     
     var body: some View {
         VStack {
@@ -26,8 +28,16 @@ struct LandmarkDetail: View {
     }
 }
 
-
+// MARK: - Computeds
 extension LandmarkDetail {
+    
+    var landmarkIndex: Int {
+        userData.landmarks.firstIndex(where: { $0.id == landmark.id })!
+    }
+}
+
+
+private extension LandmarkDetail {
     
     var descriptionView: some View {
         VStack(alignment: .leading) {
