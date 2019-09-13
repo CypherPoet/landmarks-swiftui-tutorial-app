@@ -11,11 +11,16 @@ import Combine
 
 
 final class UserDataStore: ObservableObject {
+    private static let savedLandmarks: [Landmark] = DataLoader.loadModels(fromFileNamed: "landmarkData.json")
+    
     @Published var isShowingFavoritesOnly: Bool
     @Published var landmarks: [Landmark]
     
     
-    init(isShowingFavoritesOnly: Bool = false, landmarks: [Landmark] = []) {
+    init(
+        isShowingFavoritesOnly: Bool = false,
+        landmarks: [Landmark] = UserDataStore.savedLandmarks
+        ) {
         self.isShowingFavoritesOnly = isShowingFavoritesOnly
         self.landmarks = landmarks
     }

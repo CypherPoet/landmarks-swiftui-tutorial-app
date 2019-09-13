@@ -77,7 +77,7 @@ extension LandmarkDetail {
 
 struct LandmarkDetail_Previews: PreviewProvider {
     static var previews: some View {
-        let userDataStore = UserDataStore(landmarks: Landmark.dummyLandmarks)
+        let userDataStore = UserDataStore()
         
         return LandmarkDetail(landmark: userDataStore.landmarks[0])
             .environmentObject(userDataStore)

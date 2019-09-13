@@ -52,7 +52,7 @@ struct LandmarkList_Previews: PreviewProvider {
             id: \.self,
             content: { deviceName in
                 LandmarkList()
-                    .environmentObject(UserDataStore(landmarks: Landmark.dummyLandmarks))
+                    .environmentObject(UserDataStore())
                     .previewDevice(PreviewDevice(rawValue: deviceName))
                     .previewDisplayName(deviceName)
             }
