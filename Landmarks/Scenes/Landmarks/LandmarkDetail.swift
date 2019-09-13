@@ -62,7 +62,7 @@ extension LandmarkDetail {
                 }
             }
             
-            HStack(alignment: .top) {
+            HStack {
                 Text(verbatim: landmark.park)
                     .font(.subheadline)
                 Spacer()
