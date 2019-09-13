@@ -43,7 +43,7 @@ extension LandmarkDetail {
     var descriptionView: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(landmark.name)
+                Text(verbatim: landmark.name)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.pink)
@@ -63,10 +63,10 @@ extension LandmarkDetail {
             }
             
             HStack(alignment: .top) {
-                Text(landmark.park)
+                Text(verbatim: landmark.park)
                     .font(.subheadline)
                 Spacer()
-                Text(landmark.state)
+                Text(verbatim: landmark.state)
                     .font(.subheadline)
             }
         }
@@ -77,7 +77,9 @@ extension LandmarkDetail {
 
 struct LandmarkDetail_Previews: PreviewProvider {
     static var previews: some View {
-        LandmarkDetail(landmark: Landmark.dummyLandmarks[0])
-            .environmentObject(UserDataStore(landmarks: Landmark.dummyLandmarks))
+        let userDataStore = UserDataStore(landmarks: Landmark.dummyLandmarks)
+        
+        return LandmarkDetail(landmark: userDataStore.landmarks[0])
+            .environmentObject(userDataStore)
     }
 }

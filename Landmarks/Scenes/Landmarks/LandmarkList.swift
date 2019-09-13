@@ -18,7 +18,10 @@ struct LandmarkList: View {
                     Text("Favorites only")
                 }
                 ForEach(landmarksToShow) { landmark in
-                    NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
+                    NavigationLink(
+                        destination: LandmarkDetail(landmark: landmark)
+                            .environmentObject(self.userData)
+                    ) {
                         LandmarkRow(landmark: landmark)
                     }
                 }
