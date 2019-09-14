@@ -1,5 +1,5 @@
 //
-//  Badge.swift
+//  BadgeBackground.swift
 //  Landmarks
 //
 //  Created by Brian Sipple on 9/13/19.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Badge: View {
+struct BadgeBackground: View {
     static let gradientStart = Color(hue: 0.88, saturation: 0.46, brightness: 0.94)
     static let gradientEnd = Color(hue: 0.07, saturation: 0.50, brightness: 0.94)
     static let xScale: CGFloat = 0.832
@@ -22,12 +22,13 @@ struct Badge: View {
                 // of the badge when its containing view isn’t square.
                 let sideLength = min(geometry.size.width, geometry.size.height)
                 
-                let height = sideLength
+                var height = sideLength
 
                 var width = sideLength
                 let xOffset = (width * (1.0 - Self.xScale)) / 2.0
                 
                 width *= Self.xScale
+//                height *= Self.xScale
                 
                 path.move(
                     to: CGPoint(
@@ -69,8 +70,8 @@ struct Badge: View {
 }
 
 
-struct Badge_Previews: PreviewProvider {
+struct BadgeBackground_Previews: PreviewProvider {
     static var previews: some View {
-        Badge()
+        BadgeBackground()
     }
 }
