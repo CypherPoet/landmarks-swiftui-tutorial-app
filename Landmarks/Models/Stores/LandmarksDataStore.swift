@@ -1,5 +1,5 @@
 //
-//  UserDataStore.swift
+//  LandmarksDataStore.swift
 //  Landmarks
 //
 //  Created by Brian Sipple on 9/12/19.
@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 
-final class UserDataStore: ObservableObject {
+final class LandmarksDataStore: ObservableObject {
     private static let savedLandmarks: [Landmark] = DataLoader.loadModels(fromFileNamed: "landmarkData.json")
     
     @Published var isShowingFavoritesOnly: Bool
@@ -19,8 +19,8 @@ final class UserDataStore: ObservableObject {
     
     init(
         isShowingFavoritesOnly: Bool = false,
-        landmarks: [Landmark] = UserDataStore.savedLandmarks
-        ) {
+        landmarks: [Landmark] = LandmarksDataStore.savedLandmarks
+    ) {
         self.isShowingFavoritesOnly = isShowingFavoritesOnly
         self.landmarks = landmarks
     }

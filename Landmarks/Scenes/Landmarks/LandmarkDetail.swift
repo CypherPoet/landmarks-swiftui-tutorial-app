@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
-    @EnvironmentObject var userData: UserDataStore
+    @EnvironmentObject var userData: LandmarksDataStore
     
     let landmark: Landmark
     
@@ -77,7 +77,7 @@ extension LandmarkDetail {
 
 struct LandmarkDetail_Previews: PreviewProvider {
     static var previews: some View {
-        let userDataStore = UserDataStore()
+        let userDataStore = LandmarksDataStore()
         
         return LandmarkDetail(landmark: userDataStore.landmarks[0])
             .environmentObject(userDataStore)
