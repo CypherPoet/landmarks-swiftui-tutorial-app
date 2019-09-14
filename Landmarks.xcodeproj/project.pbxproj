@@ -54,6 +54,7 @@
 		F3F05031232D1B8700269837 /* hikeData.json in Resources */ = {isa = PBXBuildFile; fileRef = F3F05030232D1B8700269837 /* hikeData.json */; };
 		F3F05033232D289500269837 /* GraphCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F05032232D289500269837 /* GraphCapsule.swift */; };
 		F3F05035232D2CA500269837 /* HikeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F05034232D2CA500269837 /* HikeDetail.swift */; };
+		F3F05038232D4A2E00269837 /* AnyTransition+MoveAndFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F05037232D4A2E00269837 /* AnyTransition+MoveAndFade.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		F3F05030232D1B8700269837 /* hikeData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hikeData.json; sourceTree = "<group>"; };
 		F3F05032232D289500269837 /* GraphCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphCapsule.swift; sourceTree = "<group>"; };
 		F3F05034232D2CA500269837 /* HikeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetail.swift; sourceTree = "<group>"; };
+		F3F05037232D4A2E00269837 /* AnyTransition+MoveAndFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+MoveAndFade.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 		F3A06C3523298DB4008CD3DC /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
+				F3F05036232D4A0D00269837 /* Transitions */,
 				F3F0502B232D17C900269837 /* Extensions */,
 				F3A06C3E2329BCB9008CD3DC /* DataLoader.swift */,
 				F3A06C3623298DC8008CD3DC /* ImageStore.swift */,
@@ -347,6 +350,14 @@
 				F3F0502C232D17D900269837 /* Range+Magnitude.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F3F05036232D4A0D00269837 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				F3F05037232D4A2E00269837 /* AnyTransition+MoveAndFade.swift */,
+			);
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -501,6 +512,7 @@
 				F33EE9B6232B9C4B00C4BAF1 /* Badge.swift in Sources */,
 				F3A06C3F2329BCB9008CD3DC /* DataLoader.swift in Sources */,
 				F3F05026232D0FA700269837 /* Hike.swift in Sources */,
+				F3F05038232D4A2E00269837 /* AnyTransition+MoveAndFade.swift in Sources */,
 				F3F0502A232D15C100269837 /* HikeGraph.swift in Sources */,
 				F3F05028232D117A00269837 /* Hike+Observation.swift in Sources */,
 				F3A06C432329F71E008CD3DC /* LandmarkList.swift in Sources */,

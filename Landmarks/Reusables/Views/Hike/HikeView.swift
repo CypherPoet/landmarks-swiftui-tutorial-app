@@ -26,21 +26,22 @@ struct HikeView: View {
                 Spacer()
                 
                 Button(action: {
-                    self.isShowingDetail.toggle()
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        self.isShowingDetail.toggle()
+                    }
                 }) {
                     Image(systemName: "chevron.right.circle")
                         .font(.system(size: 22))
                         .rotationEffect(.radians(isShowingDetail ? (.pi / 2) : 0))
                         .scaleEffect(isShowingDetail ? 1.35 : 1)
                         .padding()
-                        .animation(.spring())
                 }
             }
             
             
             if isShowingDetail {
-                // Render Detail View
                 HikeDetail(hike: hike)
+                    .transition(.moveAndFade)
             }
         }
     }
