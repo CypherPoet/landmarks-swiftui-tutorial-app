@@ -11,7 +11,7 @@ import SwiftUI
 func rangeOfRanges<C: Collection>(_ ranges: C) -> Range<Double>
     where C.Element == Range<Double>
 {
-    guard !ranges.isEmpty else { return 0..<0 }
+    guard !ranges.isEmpty else { return 0 ..< 0 }
     
     let low = ranges.lazy.map { $0.lowerBound }.min()!
     let high = ranges.lazy.map { $0.upperBound }.max()!
@@ -42,6 +42,7 @@ struct HikeGraph: View {
         let overallRange = rangeOfRanges(observations.lazy.map { $0[keyPath: self.observationKeyPath] })
         let maxMagnitude = observations.map( { $0[keyPath: self.observationKeyPath].magnitude }).max()!
         let heightRatio = 1 - CGFloat(maxMagnitude / overallRange.magnitude)
+
         
         return GeometryReader { geometry in
             HStack(alignment: .bottom, spacing: geometry.size.width / 120) {

@@ -11,7 +11,7 @@ import SwiftUI
 struct HikeView: View {
     var hike: Hike
     
-    @State private var isShowingDetail = false
+    @State private var isShowingDetail = true
     
     
     var body: some View {

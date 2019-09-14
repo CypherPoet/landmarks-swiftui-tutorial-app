@@ -20,12 +20,14 @@ struct GraphCapsule: View {
             .fill(Color.white)
             .frame(height: height * heightRatio, alignment: .bottom)
             .offset(x: 0, y: height * -offsetRatio)
+            .animation(animation)
     }
 }
 
 
 // MARK: - Computeds
 extension GraphCapsule {
+    
     var heightRatio: CGFloat {
         max(CGFloat(range.magnitude / overallRange.magnitude), 0.15)
     }
@@ -34,6 +36,12 @@ extension GraphCapsule {
         CGFloat(
             (range.lowerBound - overallRange.lowerBound) / overallRange.magnitude
         )
+    }
+    
+    var animation: Animation {
+        Animation.spring(dampingFraction: 0.5)
+            .speed(2)
+            .delay(Double(index) * 0.03)
     }
 }
 

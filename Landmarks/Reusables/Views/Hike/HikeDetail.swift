@@ -25,6 +25,7 @@ struct HikeDetail: View {
             HikeGraph(hike: hike, observationKeyPath: dataToShow)
                 .frame(height: 200, alignment: .center)
                 .offset(x: 0, y: -48)
+                .padding(.top, 48)
             
             HStack(spacing: 25) {
                 ForEach(observationButtons, id: \.0) { (label, observation) in
