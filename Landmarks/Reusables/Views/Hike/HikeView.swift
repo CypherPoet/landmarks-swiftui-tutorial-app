@@ -29,9 +29,11 @@ struct HikeView: View {
                     self.isShowingDetail.toggle()
                 }) {
                     Image(systemName: "chevron.right.circle")
+                        .font(.system(size: 22))
                         .rotationEffect(.radians(isShowingDetail ? (.pi / 2) : 0))
+                        .scaleEffect(isShowingDetail ? 1.35 : 1)
                         .padding()
-                        .animation(.easeInOut)
+                        .animation(.spring())
                 }
             }
             
