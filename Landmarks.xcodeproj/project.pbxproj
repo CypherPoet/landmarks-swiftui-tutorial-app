@@ -55,6 +55,7 @@
 		F3F05033232D289500269837 /* GraphCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F05032232D289500269837 /* GraphCapsule.swift */; };
 		F3F05035232D2CA500269837 /* HikeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F05034232D2CA500269837 /* HikeDetail.swift */; };
 		F3F05038232D4A2E00269837 /* AnyTransition+MoveAndFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F05037232D4A2E00269837 /* AnyTransition+MoveAndFade.swift */; };
+		F3F0503A232E2FE200269837 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F05039232E2FE200269837 /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		F3F05032232D289500269837 /* GraphCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphCapsule.swift; sourceTree = "<group>"; };
 		F3F05034232D2CA500269837 /* HikeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetail.swift; sourceTree = "<group>"; };
 		F3F05037232D4A2E00269837 /* AnyTransition+MoveAndFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+MoveAndFade.swift"; sourceTree = "<group>"; };
+		F3F05039232E2FE200269837 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 			children = (
 				F3A06C3B23299DF3008CD3DC /* Landmarks */,
 				F373710B23289493005B80D5 /* LaunchScreen.storyboard */,
+				F3F05039232E2FE200269837 /* Home.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F37F6375232B830200FC6178 /* HexagonParameters.swift in Sources */,
+				F3F0503A232E2FE200269837 /* Home.swift in Sources */,
 				F33EE9B6232B9C4B00C4BAF1 /* Badge.swift in Sources */,
 				F3A06C3F2329BCB9008CD3DC /* DataLoader.swift in Sources */,
 				F3F05026232D0FA700269837 /* Hike.swift in Sources */,
