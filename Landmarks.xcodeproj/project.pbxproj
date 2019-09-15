@@ -56,6 +56,7 @@
 		F3F05035232D2CA500269837 /* HikeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F05034232D2CA500269837 /* HikeDetail.swift */; };
 		F3F05038232D4A2E00269837 /* AnyTransition+MoveAndFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F05037232D4A2E00269837 /* AnyTransition+MoveAndFade.swift */; };
 		F3F0503A232E2FE200269837 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F05039232E2FE200269837 /* Home.swift */; };
+		F3F0503C232E3E0000269837 /* LandmarksCategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0503B232E3E0000269837 /* LandmarksCategoryRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		F3F05034232D2CA500269837 /* HikeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetail.swift; sourceTree = "<group>"; };
 		F3F05037232D4A2E00269837 /* AnyTransition+MoveAndFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+MoveAndFade.swift"; sourceTree = "<group>"; };
 		F3F05039232E2FE200269837 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		F3F0503B232E3E0000269837 /* LandmarksCategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksCategoryRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 			children = (
 				F373710423289490005B80D5 /* LandmarkDetail.swift */,
 				F3A06C422329F71E008CD3DC /* LandmarkList.swift */,
+				F3F0503B232E3E0000269837 /* LandmarksCategoryRow.swift */,
 			);
 			path = Landmarks;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3F0503C232E3E0000269837 /* LandmarksCategoryRow.swift in Sources */,
 				F37F6375232B830200FC6178 /* HexagonParameters.swift in Sources */,
 				F3F0503A232E2FE200269837 /* Home.swift in Sources */,
 				F33EE9B6232B9C4B00C4BAF1 /* Badge.swift in Sources */,

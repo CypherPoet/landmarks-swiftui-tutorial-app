@@ -16,7 +16,10 @@ struct CategoryHome: View {
         NavigationView {
             List {
                 ForEach(categories.keys.sorted(), id: \.self) { categoryName in
-                    Text(verbatim: categoryName)
+                    LandmarksCategoryRow(
+                        categoryName: categoryName,
+                        landmarks: self.categories[categoryName]!
+                    )
                 }
             }
             .navigationBarTitle(Text("Featured"))
@@ -27,7 +30,7 @@ struct CategoryHome: View {
 
 extension CategoryHome {
     var landmarks: [Landmark] { landmarksDataStore.landmarks }
-    
+
     var categories: [String: [Landmark]] {
         Dictionary(grouping: landmarks, by: { $0.category.displayName })
     }
