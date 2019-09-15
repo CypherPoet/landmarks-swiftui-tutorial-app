@@ -22,11 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         // Create the SwiftUI view that provides the window contents.
-        let contentView = LandmarkList()
+        let rootContentView = CategoryHome()
             .environmentObject(LandmarksDataStore())
         
         // Use a `UIHostingController` as the window root view controller.
-        window.rootViewController = UIHostingController(rootView: contentView)
+        window.rootViewController = UIHostingController(rootView: rootContentView)
         self.window = window
         window.makeKeyAndVisible()
     }

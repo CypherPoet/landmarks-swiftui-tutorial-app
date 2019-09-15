@@ -20,32 +20,8 @@ struct Landmark: Identifiable {
     var isFavorite: Bool = false
     var isFeatured: Bool = false
 
-    // TODO: Make this `fileprivate`
-    var imageName: String
-    // TODO: Make this `fileprivate`
-    var coordinates: Coordinates
-    
-    
-    // TODO: Remove this after implementing better ways to access stored data
-    static let dummyLandmarks = [
-        Landmark(
-            name: "Turtle Rock 🐢",
-            state: "California",
-            park: "Joshua Tree National Park",
-            category: .rivers,
-            isFavorite: true,
-            imageName: "turtlerock",
-            coordinates: Coordinates(latitude: -116.166868, longitude: 34.011286)
-        ),
-        Landmark(
-            name: "Silver Salmon Creek",
-            state: "Alaska",
-            park: "Lake Clark National Park and Preserve",
-            category: .lakes,
-            imageName: "silversalmoncreek",
-            coordinates: Coordinates(latitude: -152.665167, longitude: 59.980167)
-        )
-    ]
+    fileprivate var imageName: String
+    fileprivate var coordinates: Coordinates
 }
 
 

@@ -13,7 +13,7 @@ struct LandmarkRow: View {
     
     var body: some View {
         HStack {
-            Image(landmark.imageName)
+            landmark.image
                 .resizable()
                 .frame(width: 50, height: 50)
             Text(landmark.name)
@@ -31,7 +31,7 @@ struct LandmarkRow: View {
 
 struct LandmarkRow_Previews: PreviewProvider {
     static var previews: some View {
-        let landmarks = Landmark.dummyLandmarks
+        let landmarks = LandmarksDataStore().landmarks
         
         return Group {
             LandmarkRow(landmark: landmarks[0])
