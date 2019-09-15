@@ -16,14 +16,17 @@ struct LandmarksCategoryRow: View {
         VStack(alignment: .leading) {
             Text(verbatim: categoryName)
                 .font(.headline)
-                .fontWeight(.semibold)
                 .padding(15)
                 .padding(.top, 5)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(landmarks) { landmark in
-                        LandmarksCategoryItem(landmark: landmark)
+                        NavigationLink(
+                            destination: LandmarkDetail(landmark: landmark)
+                        ) {
+                            LandmarksCategoryItem(landmark: landmark)
+                        }
                     }
                 }
             }

@@ -14,10 +14,12 @@ struct LandmarksCategoryItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             landmark.image
+                .renderingMode(.original)
                 .resizable()
                 .frame(width: 155, height: 155)
                 .cornerRadius(8)
             Text(verbatim: landmark.name)
+                .foregroundColor(.primary)
                 .font(.callout)
             
         }

@@ -11,6 +11,8 @@ import SwiftUI
 struct CategoryHome: View {
     @EnvironmentObject private var landmarksDataStore: LandmarksDataStore
 
+    @State private var isShowingProfile = false
+    
     
     var body: some View {
         NavigationView {
@@ -28,13 +30,22 @@ struct CategoryHome: View {
                     )
                 }
                 .listRowInsets(EdgeInsets())
+                
+                NavigationLink(destination: LandmarkList()) {
+                    Text(verbatim: "See All Landmarks")
+                }
             }
             .navigationBarTitle(Text("Featured"))
+            .navigationBarItems(trailing: profileButton)
+            .sheet(isPresented: $isShowingProfile) {
+                Text("User Profile")
+            }
         }
     }
 }
 
 
+// MARK: - Computeds
 extension CategoryHome {
     var landmarks: [Landmark] { landmarksDataStore.landmarks }
 
@@ -43,6 +54,22 @@ extension CategoryHome {
     }
     
     var featuredLandmarks: [Landmark] { landmarks.filter { $0.isFeatured } }
+}
+
+
+// MARK: - Helper Views
+extension CategoryHome {
+    
+    private var profileButton: some View {
+        Button(action: {
+            self.isShowingProfile.toggle()
+        }) {
+            Image(systemName: "person.crop.circle")
+                .imageScale(.large)
+                .accessibility(label: Text("User Profile"))
+                .padding()
+        }
+    }
 }
 
 
