@@ -9,21 +9,36 @@
 import SwiftUI
 
 struct ProfileHost: View {
+    @Environment(\.editMode) var editMode
+    
+    @State private var draftProfile = Profile.default
+    
     @State private var profile = Profile.default
     @State private var hikes = HikeDataStore().hikes
-    
+
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            ProfileSummary(profile: profile, hikes: hikes)
+            HStack {
+                Spacer()
+                EditButton()
+            }
+    
+            if editMode?.wrappedValue == .inactive {
+                ProfileSummary(profile: profile, hikes: hikes)
+            } else {
+                Text("EDit")
+            }
         }
         .padding()
     }
 }
+
+
 
 struct ProfileHost_Previews: PreviewProvider {
     static var previews: some View {
         ProfileHost()
     }
 }
-    
+
