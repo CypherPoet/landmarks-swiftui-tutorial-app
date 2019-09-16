@@ -38,7 +38,7 @@ struct CategoryHome: View {
             .navigationBarTitle(Text("Featured"))
             .navigationBarItems(trailing: profileButton)
             .sheet(isPresented: $isShowingProfile) {
-                Text("User Profile")
+                ProfileHost()
             }
         }
     }
