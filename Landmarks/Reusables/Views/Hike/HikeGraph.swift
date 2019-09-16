@@ -40,8 +40,12 @@ struct HikeGraph: View {
     var body: some View {
         let observations = hike.observations
         let overallRange = rangeOfRanges(observations.lazy.map { $0[keyPath: self.observationKeyPath] })
-        let maxMagnitude = observations.map( { $0[keyPath: self.observationKeyPath].magnitude }).max()!
-        let heightRatio = 1 - CGFloat(maxMagnitude / overallRange.magnitude)
+
+        let maxObservationMagnitude = observations.map { observation in
+            observation[keyPath: self.observationKeyPath].magnitude
+        }.max() ?? 0
+        
+        let barsHeightRatio = 1 - CGFloat(maxObservationMagnitude / overallRange.magnitude)
 
         
         return GeometryReader { geometry in
@@ -49,13 +53,13 @@ struct HikeGraph: View {
                 ForEach(observations.indices) { index in
                     GraphCapsule(
                         index: index,
-                        height: geometry.size.height,
-                        range: observations[index][keyPath: self.observationKeyPath],
+                        containerHeight: geometry.size.height,
+                        observationSetRange: observations[index][keyPath: self.observationKeyPath],
                         overallRange: overallRange
                     )
                     .colorMultiply(self.capsuleColor)
                 }
-                .offset(x: 0, y: geometry.size.height * heightRatio)
+                .offset(x: 0, y: geometry.size.height * barsHeightRatio)
             }
         }
     }

@@ -10,16 +10,16 @@ import SwiftUI
 
 struct GraphCapsule: View {
     var index: Int
-    var height: CGFloat
-    var range: Range<Double>
+    var containerHeight: CGFloat
+    var observationSetRange: Range<Double>
     var overallRange: Range<Double>
     
     
     var body: some View {
         Capsule()
             .fill(Color.white)
-            .frame(height: height * heightRatio, alignment: .bottom)
-            .offset(x: 0, y: height * -offsetRatio)
+            .frame(height: containerHeight * heightRatio, alignment: .bottom)
+            .offset(x: 0, y: containerHeight * -offsetRatio)
             .animation(animation)
     }
 }
@@ -29,12 +29,12 @@ struct GraphCapsule: View {
 extension GraphCapsule {
     
     var heightRatio: CGFloat {
-        max(CGFloat(range.magnitude / overallRange.magnitude), 0.15)
+        max(CGFloat(observationSetRange.magnitude / overallRange.magnitude), 0.15)
     }
     
     var offsetRatio: CGFloat {
         CGFloat(
-            (range.lowerBound - overallRange.lowerBound) / overallRange.magnitude
+            (observationSetRange.lowerBound - overallRange.lowerBound) / overallRange.magnitude
         )
     }
     
@@ -51,8 +51,8 @@ struct GraphCapsule_Previews: PreviewProvider {
     static var previews: some View {
         GraphCapsule(
             index: 0,
-            height: 200,
-            range: 13 ..< 42,
+            containerHeight: 200,
+            observationSetRange: 13 ..< 42,
             overallRange: 2 ..< 98
         )
         .shadow(color: .purple, radius: 12, x: 0, y: 0)

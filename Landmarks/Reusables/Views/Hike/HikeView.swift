@@ -38,7 +38,6 @@ struct HikeView: View {
                 }
             }
             
-            
             if isShowingDetail {
                 HikeDetail(hike: hike)
                     .transition(.moveAndFade)
