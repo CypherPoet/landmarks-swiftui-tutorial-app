@@ -37,16 +37,18 @@ struct ProfileEditor: View {
             }
             .padding(.top)
             
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 12) {
                 Text("Goal Date")
                     .fontWeight(.bold)
-                
+  
                 DatePicker(
                     "Goal Date",
                     selection: $profile.goalDate,
                     in: goalDateRange,
                     displayedComponents: .date
                 )
+                .labelsHidden()
+                
             }
             .padding(.top)
         }
@@ -62,7 +64,8 @@ extension ProfileEditor {
         Calendar.current.date(byAdding: .year, value: 1000, to: minGoalDate) ?? Date()
     }
     
-    var goalDateRange: ClosedRange<Date> { minGoalDate ... maxGoalDate }
+//    var goalDateRange: ClosedRange<Date> { minGoalDate ... maxGoalDate }
+    var goalDateRange: PartialRangeFrom<Date> { minGoalDate... }
 }
 
 

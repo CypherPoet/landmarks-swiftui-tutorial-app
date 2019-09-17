@@ -54,6 +54,12 @@ extension Landmark {
     var image: Image {
         ImageStore.shared.image(named: imageName)
     }
+    
+    var featuredImage: Image? {
+        guard isFeatured else { return nil }
+        
+        return ImageStore.shared.image(named: "\(imageName)_featured")
+    }
 }
 
 extension Landmark: Decodable {}
