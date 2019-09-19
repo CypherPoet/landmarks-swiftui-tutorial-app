@@ -1,5 +1,5 @@
 //
-//  PageView.swift
+//  PagingView.swift
 //  Landmarks
 //
 //  Created by Brian Sipple on 9/17/19.
@@ -8,17 +8,24 @@
 
 import SwiftUI
 
-struct PageView<Page: View>: View {
+struct PagingView<Page: View>: View {
     var viewControllers: [UIHostingController<Page>]
+    @State private var currentPage = 0
+    
     
     init(_ views: [Page]) {
         self.viewControllers = views.map { UIHostingController(rootView: $0) }
     }
     
-    var body: some View {
-        PageViewController(controllers: viewControllers)
-    }
     
+    var body: some View {
+        ZStack(alignment: .bottomTrailing) {
+            PageViewController(controllers: viewControllers, currentPage: $currentPage)
+            PageControl(numberOfPages: viewControllers.count, currentPage: $currentPage)
+                .padding(.trailing)
+        }
+        .frame(maxHeight: 280, alignment: .center)
+    }
 }
 
 
@@ -28,6 +35,6 @@ struct PageView_Previews: PreviewProvider {
         let featuredLandmarks = LandmarksDataStore().landmarks.filter { $0.isFeatured }
         let featureCards = featuredLandmarks.map { FeatureCard(landmark: $0) }
         
-        return PageView(featureCards)
+        return PagingView(featureCards)
     }
 }

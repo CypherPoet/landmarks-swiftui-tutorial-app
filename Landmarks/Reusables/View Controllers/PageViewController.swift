@@ -15,6 +15,7 @@ struct PageViewController: UIViewControllerRepresentable {
     typealias Context = UIViewControllerRepresentableContext<PageViewController>
     
     var controllers: [UIViewController]
+    @Binding var currentPage: Int
 }
 
 
@@ -23,6 +24,9 @@ extension PageViewController {
     // SwiftUI calls this `makeCoordinator()` method before `makeUIViewController(context:)`,
     // so that you have access to the coordinator object when configuring your view controller.
     func makeCoordinator() -> Coordinator {
+        // A refactoring opportunity would be to initialize `PageViewController`
+        // with a coordinator factory -- and then this method would call its
+        // `makeCoordinator` function
         Coordinator(self)
     }
     
@@ -34,13 +38,19 @@ extension PageViewController {
         )
         
         pageViewController.dataSource = context.coordinator
+        pageViewController.delegate = context.coordinator
+//        pageViewController.view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         return pageViewController
     }
     
     
     func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
-        pageViewController.setViewControllers([controllers[0]], direction: .forward, animated: true)
+        pageViewController.setViewControllers(
+            [controllers[currentPage]],
+            direction: .forward,
+            animated: true
+        )
     }
 }
 
@@ -62,7 +72,7 @@ extension PageViewController {
     }
 }
 
-
+// MARK: - Coordinator: UIPageViewControllerDataSource
 extension PageViewController.Coordinator: UIPageViewControllerDataSource {
     
     func pageViewController(
@@ -90,5 +100,25 @@ extension PageViewController.Coordinator: UIPageViewControllerDataSource {
         } else {
             return parent.controllers[index + 1]
         }
+    }
+}
+
+
+// MARK: - Coordinator: UIPageViewControllerDelegate
+extension PageViewController.Coordinator: UIPageViewControllerDelegate {
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool
+    ) {
+        guard
+            completed,
+            let visibleViewController = pageViewController.viewControllers?.first,
+            let newPage = parent.controllers.firstIndex(of: visibleViewController)
+        else { return }
+        
+        parent.currentPage = newPage
     }
 }
